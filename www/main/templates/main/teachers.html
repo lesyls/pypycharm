@@ -1,22 +1,84 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Преподаватели</title>
-</head>
-<style>
+    <style>
         body {
             font-family: Arial;
             margin: 0;
             padding: 0;
-            background: #f8f9fa;
+            background: #f0f0f0;
         }
-</style>
 
-<body>
+        .header {
+            background: #2c3e50;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .content {
+            margin: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .teacher-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .teacher-link {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
 <body>
     <div class="header">
-        <div class="logo" onclick="goHome()">Мир Знаний</div>
+        <div class="logo" onclick="window.location.href='/'">Мир Знаний</div>
         <div class="buttons">
             <button class="button" onclick="window.location.href='/students/'">Студенты</button>
             <button class="button" onclick="window.location.href='/groups/'">Группы</button>
@@ -24,6 +86,40 @@
             <button class="button" onclick="window.location.href='/journal/'">Журнал</button>
             <button class="button" onclick="window.location.href='/teachers/'">Преподаватели</button>
         </div>
+    </div>
+
+    <div class="content">
+        <h1>Список преподавателей</h1>
+
+        <table>
+            <tr>
+                <th>Фото</th>
+                <th>Ф.И.О.</th>
+                <th>Предмет</th>
+                <th>Телефон</th>
+            </tr>
+
+            <tr>
+                <td><img src="https://img.freepik.com/free-vector/hand-drawn-teacher-cartoon-illustration_52683-131661.jpg" class="teacher-photo"></td>
+                <td><a href="#" class="teacher-link">Подойницына Н.С.</a></td>
+                <td>Экономика</td>
+                <td>+7 (911) 111-11-11</td>
+            </tr>
+
+            <tr>
+                <td><img src="https://img.freepik.com/free-vector/hand-drawn-teacher-cartoon-illustration_52683-131661.jpg" class="teacher-photo"></td>
+                <td><a href="#" class="teacher-link">Иванова А.А.</a></td>
+                <td>Математика</td>
+                <td>+7 (922) 222-22-22</td>
+            </tr>
+
+            <tr>
+                <td><img src="https://img.freepik.com/free-vector/hand-drawn-teacher-cartoon-illustration_52683-131661.jpg" class="teacher-photo"></td>
+                <td><a href="#" class="teacher-link">Петров А.А.</a></td>
+                <td>Программирование</td>
+                <td>+7 (933) 333-33-33</td>
+            </tr>
+        </table>
     </div>
 
 </body>

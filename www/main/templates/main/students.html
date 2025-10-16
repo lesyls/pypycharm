@@ -1,115 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Студенты - Мир Знаний</title>
+    <title>Студенты</title>
     <style>
         body {
             font-family: Arial;
             margin: 0;
             padding: 0;
-            background: #f8f9fa;
+            background: #f0f0f0;
         }
 
         .header {
             background: #2c3e50;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .logo {
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .logo:hover {
-            color: #f0f0f0;
-        }
-
         .buttons {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         .button {
             background: #3498db;
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 5px 10px;
             cursor: pointer;
         }
 
-        .button:hover {
-            background: #2980b9;
-        }
-
         .content {
-            margin: 30px;
+            margin: 20px;
         }
 
-        .page-title {
+        h1 {
             color: #2c3e50;
-            margin-bottom: 20px;
         }
 
-        .student-table {
+        .add-student {
+            background: #e0ffe0;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .add-student input {
+            padding: 5px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        .btn-add {
+            background: green;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        table {
             width: 100%;
             border-collapse: collapse;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .student-table th {
+        th {
             background: #34495e;
             color: white;
-            padding: 15px;
+            padding: 10px;
             text-align: left;
         }
 
-        .student-table td {
-            padding: 15px;
-            border-bottom: 1px solid #ecf0f1;
-        }
-
-        .student-table tr:hover {
-            background: #f8f9fa;
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
         }
 
         .student-photo {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            object-fit: cover;
         }
 
         .student-link {
-            color: #3498db;
+            color: blue;
             text-decoration: none;
             font-weight: bold;
         }
 
-        .student-link:hover {
-            text-decoration: underline;
-        }
-
-        .group-badge {
-            background: #e74c3c;
+        .btn-delete {
+            background: red;
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
+            border: none;
+            padding: 3px 8px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo" onclick="goHome()">Мир Знаний</div>
+        <div class="logo" onclick="window.location.href='/'">Мир Знаний</div>
         <div class="buttons">
             <button class="button" onclick="window.location.href='/students/'">Студенты</button>
             <button class="button" onclick="window.location.href='/groups/'">Группы</button>
@@ -120,58 +118,45 @@
     </div>
 
     <div class="content">
-        <h1 class="page-title">Список студентов</h1>
+        <h1>Список студентов</h1>
 
-        <table class="student-table">
+        <!-- Форма добавления студента -->
+        <div class="add-student">
+            <h3>Добавить студента:</h3>
+            <form action="{% url 'student_add' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Ф.И.О." required>
+                <input type="text" name="phone" placeholder="Телефон" required>
+                <input type="text" name="group" placeholder="Группа" required>
+                <input type="text" name="photo" placeholder="Ссылка на фото" value="https://img.freepik.com/premium-photo/student-3d-models-cartoon-boy-happy-isolated-background_318354-1365.jpg">
+                <button type="submit" class="btn-add">Добавить</button>
+            </form>
+        </div>
+
+        <table>
             <tr>
                 <th>Фото</th>
                 <th>Ф.И.О.</th>
                 <th>Телефон</th>
                 <th>Группа</th>
+                <th>Действия</th>
             </tr>
 
+            {% for student in students %}
             <tr>
-                <td><img src="https://img.freepik.com/premium-photo/student-3d-models-cartoon-boy-happy-isolated-background_318354-1365.jpg" class="student-photo" alt="Фото"></td>
-                <td><a href="student.html?id=1" class="student-link">Иванов Иван Иванович</a></td>
-                <td>+7 (912) 345-67-89</td>
-                <td><span class="group-badge">ИТ-21</span></td>
+                <td><img src="{{ student.photo }}" class="student-photo"></td>
+                <td><a href="{% url 'students_edit' student.id %}" class="student-link">{{ student.name }}</a></td>
+                <td>{{ student.phone }}</td>
+                <td>{{ student.group.name }}</td>
+                <td>
+                    <form action="{% url 'student_delete' student.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-delete" onclick="return confirm('Удалить?')">Удалить</button>
+                    </form>
+                </td>
             </tr>
-
-            <tr>
-                <td><img src="https://img.freepik.com/premium-photo/student-3d-models-cartoon-boy-happy-isolated-background_318354-1365.jpg" class="student-photo" alt="Фото"></td>
-                <td><a href="student.html?id=2" class="student-link">Петрова Анна Сергеевна</a></td>
-                <td>+7 (923) 456-78-90</td>
-                <td><span class="group-badge">ИТ-21</span></td>
-            </tr>
-
-            <tr>
-                <td><img src="https://img.freepik.com/premium-photo/student-3d-models-cartoon-boy-happy-isolated-background_318354-1365.jpg" class="student-photo" alt="Фото"></td>
-                <td><a href="student.html?id=3" class="student-link">Сидоров Алексей Петрович</a></td>
-                <td>+7 (934) 567-89-01</td>
-                <td><span class="group-badge">ИТ-22</span></td>
-            </tr>
-
-            <tr>
-                <td><img src="https://img.freepik.com/premium-photo/student-3d-models-cartoon-boy-happy-isolated-background_318354-1365.jpg" class="student-photo" alt="Фото"></td>
-                <td><a href="student.html?id=4" class="student-link">Козлова Мария Владимировна</a></td>
-                <td>+7 (945) 678-90-12</td>
-                <td><span class="group-badge">ИТ-22</span></td>
-            </tr>
-
-            <tr>
-                <td><img src="https://img.freepik.com/premium-photo/student-3d-models-cartoon-boy-happy-isolated-background_318354-1365.jpg" class="student-photo" alt="Фото"></td>
-                <td><a href="student.html?id=5" class="student-link">Никитин Дмитрий Олегович</a></td>
-                <td>+7 (956) 789-01-23</td>
-                <td><span class="group-badge">ИТ-23</span></td>
-            </tr>
+            {% endfor %}
         </table>
     </div>
-
-    <script>
-        function goHome() {
-            window.location.href = '/';
-        }
-    </script>
-
 </body>
 </html>

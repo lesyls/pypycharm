@@ -1,123 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Группы - Мир Знаний</title>
+    <title>Группы</title>
     <style>
         body {
             font-family: Arial;
             margin: 0;
             padding: 0;
-            background: #f8f9fa;
+            background: #f0f0f0;
         }
 
         .header {
             background: #2c3e50;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .logo {
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .logo:hover {
-            color: #f0f0f0;
-        }
-
         .buttons {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         .button {
             background: #3498db;
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 5px 10px;
             cursor: pointer;
         }
 
-        .button:hover {
-            background: #2980b9;
-        }
-
         .content {
-            margin: 30px;
+            margin: 20px;
         }
 
-        .page-title {
+        h1 {
             color: #2c3e50;
-            margin-bottom: 20px;
         }
 
-        .groups-list {
+        .groups {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
 
         .group-card {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            width: 300px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            width: 250px;
         }
 
         .group-name {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .group-info {
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
-
-        .teacher-select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            color: #666;
             margin-bottom: 10px;
         }
 
-        .assign-btn {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .assign-btn:hover {
-            background: #219652;
-        }
-
-        .current-teacher {
-            background: #3498db;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
+        .teacher-info {
+            background: #e3f2fd;
+            padding: 5px;
             font-size: 14px;
-            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo" onclick="goHome()">Мир Знаний</div>
+        <div class="logo" onclick="window.location.href='/'">Мир Знаний</div>
         <div class="buttons">
             <button class="button" onclick="window.location.href='/students/'">Студенты</button>
             <button class="button" onclick="window.location.href='/groups/'">Группы</button>
@@ -128,68 +89,34 @@
     </div>
 
     <div class="content">
-        <h1 class="page-title">Список групп</h1>
+        <h1>Список групп</h1>
 
-        <div class="groups-list">
+        <div class="groups">
             <div class="group-card">
-                <div class="group-name">ИТ-21</div>
-                <div class="group-info">Студентов: 25</div>
-                <div class="current-teacher">Классный руководитель: Иванова М.И.</div>
-                <select class="teacher-select">
-                    <option value="">Выберите классного руководителя</option>
-                    <option value="1">Иванова М.И.</option>
-                    <option value="2">Петров С.В.</option>
-                    <option value="3">Сидорова А.П.</option>
-                </select>
-                <button class="assign-btn">Назначить</button>
+                <div class="group-name">ИСиП-22-2в</div>
+                <div class="group-info">Студентов: 30</div>
+                <div class="teacher-info">Классный руководитель: Подойницына Н.С.</div>
             </div>
 
             <div class="group-card">
-                <div class="group-name">ИТ-22</div>
+                <div class="group-name">ЗИО-22-1</div>
                 <div class="group-info">Студентов: 23</div>
-                <div class="current-teacher">Классный руководитель: Петров С.В.</div>
-                <select class="teacher-select">
-                    <option value="">Выберите классного руководителя</option>
-                    <option value="1">Иванова М.И.</option>
-                    <option value="2">Петров С.В.</option>
-                    <option value="3">Сидорова А.П.</option>
-                </select>
-                <button class="assign-btn">Назначить</button>
+                <div class="teacher-info">Классный руководитель: Петров С.В.</div>
             </div>
 
             <div class="group-card">
-                <div class="group-name">ИТ-23</div>
+                <div class="group-name">СЗС-23-2</div>
                 <div class="group-info">Студентов: 20</div>
-                <div class="current-teacher">Классный руководитель: не назначен</div>
-                <select class="teacher-select">
-                    <option value="">Выберите классного руководителя</option>
-                    <option value="1">Иванова М.И.</option>
-                    <option value="2">Петров С.В.</option>
-                    <option value="3">Сидорова А.П.</option>
-                </select>
-                <button class="assign-btn">Назначить</button>
+                <div class="teacher-info">Классный руководитель: не назначен</div>
             </div>
 
             <div class="group-card">
-                <div class="group-name">ПР-21</div>
+                <div class="group-name">ИСиП-24-1к</div>
                 <div class="group-info">Студентов: 18</div>
-                <div class="current-teacher">Классный руководитель: Сидорова А.П.</div>
-                <select class="teacher-select">
-                    <option value="">Выберите классного руководителя</option>
-                    <option value="1">Иванова М.И.</option>
-                    <option value="2">Петров С.В.</option>
-                    <option value="3">Сидорова А.П.</option>
-                </select>
-                <button class="assign-btn">Назначить</button>
+                <div class="teacher-info">Классный руководитель: Сидорова А.П.</div>
             </div>
         </div>
     </div>
-
-    <script>
-        function goHome() {
-            window.location.href = '/';
-        }
-    </script>
 
 </body>
 </html>

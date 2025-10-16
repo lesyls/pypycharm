@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать студента</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+        }
+
+        .header {
+            background: #2c3e50;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .content {
+            margin: 20px;
+        }
+
+        .student-card {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+
+        .student-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-save {
+            background: green;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .btn-delete {
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .btn-back {
+            background: gray;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo" onclick="window.location.href='/'">Мир Знаний</div>
+        <div class="buttons">
+            <button class="button" onclick="window.location.href='/students/'">Студенты</button>
+            <button class="button" onclick="window.location.href='/groups/'">Группы</button>
+            <button class="button" onclick="window.location.href='/predmets/'">Предметы</button>
+            <button class="button" onclick="window.location.href='/journal/'">Журнал</button>
+            <button class="button" onclick="window.location.href='/teachers/'">Преподаватели</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <button class="btn-back" onclick="window.location.href='/students/'">← Назад</button>
+
+        <div class="student-card">
+            <img src="{{ student.photo }}" class="student-photo" alt="Фото">
+
+            <div class="form-group">
+                <label>Ф.И.О.:</label>
+                <input type="text" id="name" value="{{ student.name }}">
+            </div>
+
+            <div class="form-group">
+                <label>Телефон:</label>
+                <input type="text" id="phone" value="{{ student.phone }}">
+            </div>
+
+            <div class="form-group">
+                <label>Группа:</label>
+                <input type="text" id="group" value="{{ student.group.name }}">
+            </div>
+
+            <div class="form-group">
+                <label>Фото (ссылка):</label>
+                <input type="text" id="photo" value="{{ student.photo }}">
+            </div>
+
+            <div>
+                <button class="btn-save" onclick="saveStudent()">Сохранить</button>
+                <button class="btn-delete" onclick="deleteStudent()">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function saveStudent() {
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var group = document.getElementById('group').value;
+            var photo = document.getElementById('photo').value;
+
+            // Просто показываем сообщение (не умеем отправлять на сервер)
+            alert('Сохранено!\n' + name + '\n' + phone + '\n' + group);
+
+            // Обновляем фото на странице
+            document.querySelector('.student-photo').src = photo;
+        }
+
+        function deleteStudent() {
+            if (confirm('Удалить этого студента?')) {
+                alert('Студент удален!');
+                window.location.href = '/students/';
+            }
+        }
+    </script>
+
+</body>
+</html>

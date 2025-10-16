@@ -1,108 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Предметы - Мир Знаний</title>
+    <title>Предметы</title>
     <style>
         body {
             font-family: Arial;
             margin: 0;
             padding: 0;
-            background: #f8f9fa;
+            background: #f0f0f0;
         }
 
         .header {
             background: #2c3e50;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .logo {
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .logo:hover {
-            color: #f0f0f0;
-        }
-
         .buttons {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         .button {
             background: #3498db;
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 5px 10px;
             cursor: pointer;
         }
 
-        .button:hover {
-            background: #2980b9;
-        }
-
         .content {
-            margin: 30px;
+            margin: 20px;
         }
 
-        .page-title {
+        h1 {
             color: #2c3e50;
-            margin-bottom: 20px;
         }
 
-        .subjects-table {
+        table {
             width: 100%;
             border-collapse: collapse;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .subjects-table th {
+        th {
             background: #34495e;
             color: white;
-            padding: 15px;
+            padding: 10px;
             text-align: left;
         }
 
-        .subjects-table td {
-            padding: 15px;
-            border-bottom: 1px solid #ecf0f1;
-        }
-
-        .subjects-table tr:hover {
-            background: #f8f9fa;
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
         }
 
         .subject-link {
-            color: #3498db;
+            color: #000000;
             text-decoration: none;
             font-weight: bold;
-        }
-
-        .subject-link:hover {
-            text-decoration: underline;
-        }
-
-        .hours {
-            background: #e74c3c;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo" onclick="goHome()">Мир Знаний</div>
+        <div class="logo" onclick="window.location.href='/'">Мир Знаний</div>
         <div class="buttons">
             <button class="button" onclick="window.location.href='/students/'">Студенты</button>
             <button class="button" onclick="window.location.href='/groups/'">Группы</button>
@@ -113,58 +83,46 @@
     </div>
 
     <div class="content">
-        <h1 class="page-title">Список предметов</h1>
+        <h1>Список предметов</h1>
 
-        <table class="subjects-table">
+        <table>
             <tr>
                 <th>Название предмета</th>
-                <th>Часы</th>
                 <th>Преподаватель</th>
                 <th>Группы</th>
             </tr>
 
             <tr>
-                <td><a href="subject.html?id=1" class="subject-link">Математика</a></td>
-                <td><span class="hours">120 ч</span></td>
-                <td>Иванова М.И.</td>
-                <td>ИТ-21, ИТ-22</td>
+                <td><a href="#" class="subject-link">Математика</a></td>
+                <td>Иванова А.А.</td>
+                <td>ЗИО-22-1</td>
             </tr>
 
             <tr>
-                <td><a href="subject.html?id=2" class="subject-link">Программирование</a></td>
-                <td><span class="hours">180 ч</span></td>
-                <td>Петров С.В.</td>
-                <td>ИТ-21, ИТ-22, ИТ-23</td>
+                <td><a href="#" class="subject-link">Программирование</a></td>
+                <td>Петров А.А.</td>
+                <td>ИСиП-24-1к</td>
             </tr>
 
             <tr>
-                <td><a href="subject.html?id=3" class="subject-link">Базы данных</a></td>
-                <td><span class="hours">90 ч</span></td>
-                <td>Сидорова А.П.</td>
-                <td>ИТ-22, ИТ-23</td>
+                <td><a href="#" class="subject-link">Базы данных</a></td>
+                <td>Сидорова А.А.</td>
+                <td>ИСиП-24-1к</td>
             </tr>
 
             <tr>
-                <td><a href="subject.html?id=4" class="subject-link">Веб-разработка</a></td>
-                <td><span class="hours">150 ч</span></td>
-                <td>Козлов Д.Н.</td>
-                <td>ИТ-23</td>
+                <td><a href="#" class="subject-link">Веб-разработка</a></td>
+                <td>Козлов А.А.</td>
+                <td>ИСиП-22-2в</td>
             </tr>
 
             <tr>
-                <td><a href="subject.html?id=5" class="subject-link">Английский язык</a></td>
-                <td><span class="hours">80 ч</span></td>
-                <td>Не назначен</td>
-                <td>Не назначены</td>
+                <td><a href="#" class="subject-link">Английский язык</a></td>
+                <td>Туркова А.А.</td>
+                <td>СЗС-23-2</td>
             </tr>
         </table>
     </div>
-
-    <script>
-        function goHome() {
-            window.location.href = '/';
-        }
-    </script>
 
 </body>
 </html>
